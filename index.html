@@ -4,96 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>foundations-rock-paper-scissors</title>
+    <script src="game.js" defer></script>
 </head>
 <body>
-    <script>
-        function computerPlay() {
-            // returns a random number between 0 and 2
-            return Math.floor(Math.random() * 3);
-        }
-
-        // function get input from the player and returns the value between 0 and 2
-        function playerPlay() {
-            let input = prompt();
-            input = input.toLowerCase();
-            if (input == "rock") {
-                return 0;
-            } else if (input == "paper") {
-                return 1;
-            } else if (input == "scissors") {
-                return 2;
-            } else {
-                console.log("invalid input");
-            }
-            
-        }
-
-        // Compares the values of the functions, logs a message and returns a number between -1 and 1
-        // 1 = player wins the round, 0 = tie, -1 = computer wins the round
-        function playRound() {
-            playerSelection = playerPlay();
-            computerSelection = computerPlay();
-            console.log("You chose " + playerSelection + ".")
-            console.log("The computer chose " + computerSelection + ".")
-            // 0 beats 2, 1 beats 0, 2 beats 1
-            if (playerSelection == 0 && computerSelection == 0) {
-                console.log("It's a tie!");
-                return 0;
-            } else if (playerSelection == 0 && computerSelection == 1) {
-                console.log("You lose! Paper beats rock.");
-                return -1;
-            } else if (playerSelection == 0 && computerSelection == 2) {
-                console.log("You win! Rock beats scissors.");
-                return 1;
-            } else if (playerSelection == 1 && computerSelection == 0) {
-                console.log("You win! Paper beats rock.");
-                return 1;
-            } else if (playerSelection == 1 && computerSelection == 1) {
-                console.log("It's a tie!");
-                return 0;
-            } else if (playerSelection == 1 && computerSelection == 2) {
-                console.log("You lose! Scisccors beat paper.");
-                return -1;
-            } else if (playerSelection == 2 && computerSelection == 0) {
-                console.log("You lose! Rock beats scissors.");
-                return -1;
-            } else if (playerSelection == 2 && computerSelection == 1) {
-                console.log("You win! Scisssors beat paper.");
-                return 1;
-            } else if (playerSelection == 2 && computerSelection == 2) {
-                console.log("It's a tie!");
-                return 0;
-            }
-        }
-
-        // plays best of x games
-        function game(bestOfNo) {
-            let playerScore = 0;
-            let computerScore = 0;
-            for (let i = 0; i < bestOfNo; i++) {
-                roundResult = playRound()
-
-                if (roundResult == 1) {
-                    playerScore++;
-                } else if (roundResult == -1) {
-                    computerScore++;
-                } else {
-                    i--;
-                }
-                console.log("You vs Computer - " + playerScore + ":" + computerScore);
-
-                if (playerScore == 3) {
-                    console.log("You win the game!")
-                    break;
-                } else if (computerScore == 3) {
-                    console.log("You lose the game!")
-                    break;
-                }
-            }
-
-        }
-
-        game(5);
-    </script>
+    <div id="buttonContainer">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+    <div id="resultContainer">
+    </div>
 </body>
 </html>
