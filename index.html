@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>foundations-rock-paper-scissors</title>
+</head>
+<body>
+    <script>
+        function computerPlay() {
+            return Math.floor(Math.random() * 3);
+        }
+
+        function playerPlay() {
+            let input = prompt();
+            input = input.toLowerCase();
+            if (input == "rock") {
+                return 0;
+            } else if (input == "paper") {
+                return 1;
+            } else if (input == "scissors") {
+                return 2;
+            } else {
+                console.log("invalid input");
+            }
+            
+        }
+
+        function playRound() {
+            playerSelection = playerPlay();
+            computerSelection = computerPlay();
+            console.log("You chose " + playerSelection + ".")
+            console.log("The computer chose " + computerSelection + ".")
+            // 0 beats 2, 1 beats 0, 2 beats 1
+            if (playerSelection == 0 && computerSelection == 0) {
+                return "It's a tie!";
+            } else if (playerSelection == 0 && computerSelection == 1) {
+                return "You lose! Paper beats rock.";
+            } else if (playerSelection == 0 && computerSelection == 2) {
+                return "You win! Rock beats scissors.";
+            } else if (playerSelection == 1 && computerSelection == 0) {
+                return "You win! Paper beats rock.";
+            } else if (playerSelection == 1 && computerSelection == 1) {
+                return "It's a tie!";
+            } else if (playerSelection == 1 && computerSelection == 2) {
+                return "You lose! Scisccors beat paper.";
+            } else if (playerSelection == 2 && computerSelection == 0) {
+                return "You lose! Rock beats scissors.";
+            } else if (playerSelection == 2 && computerSelection == 1) {
+                return "You win! Scisssors beat paper.";
+            } else if (playerSelection == 2 && computerSelection == 2) {
+                return "It's a tie!";
+            }
+        }
+
+        console.log(playRound())
+    </script>
+</body>
+</html>
